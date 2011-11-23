@@ -9,6 +9,7 @@ Maintainer: 	Ian-Woo Kim <ianwookim@gmail.com>
 Build-Type: 	Simple
 Cabal-Version:  >= 1.8
 data-files:     
+                template/*.html.st
 
 
 Executable xournal-convert
@@ -26,12 +27,15 @@ Library
   ghc-prof-options: -caf-all -auto-all
   Build-Depends: 
                    base>4, mtl>2, directory, filepath,
-                   cmdargs
+                   cmdargs, 
+                   HStringTemplateHelpersIW, HStringTemplate,
+                   xournal-parser, xournal-render, 
+                   cairo>=0.12.0
   Exposed-Modules: 
                    Application.XournalConvert.ProgType
                    Application.XournalConvert.Job
                    Application.XournalConvert.Command
   Other-Modules: 
-
+                   Paths_xournal_convert
  
 		 
