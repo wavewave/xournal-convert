@@ -2,7 +2,7 @@ module Main where
 
 import System.Console.CmdArgs
 
-import Application.XournalConvert.Type
+import Application.XournalConvert.ProgType
 import Application.XournalConvert.Command
 
 main :: IO () 

@@ -28,7 +28,7 @@ Library
                    base>4, mtl>2, directory, filepath,
                    cmdargs
   Exposed-Modules: 
-                   Application.XournalConvert.Type
+                   Application.XournalConvert.ProgType
                    Application.XournalConvert.Job
                    Application.XournalConvert.Command
   Other-Modules: 

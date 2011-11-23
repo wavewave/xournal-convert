@@ -1,6 +1,6 @@
 {-# LANGUAGE DeriveDataTypeable #-}
 
-module Application.XournalConvert.Type where 
+module Application.XournalConvert.ProgType where 
 
 import System.Console.CmdArgs
 
