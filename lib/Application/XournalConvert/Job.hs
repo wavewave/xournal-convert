@@ -13,6 +13,7 @@ import Data.Xournal.Predefined
 import Text.StringTemplate
 import Text.StringTemplate.Helpers
 
+import System.Directory 
 import System.FilePath
 import System.IO
 
@@ -23,9 +24,13 @@ startJob = do
   putStrLn "job started"
 
 
-startMakeSVG :: FilePath -> IO () 
-startMakeSVG fname = do 
+startMakeSVG :: FilePath -> Maybe FilePath -> IO () 
+startMakeSVG fname mdest = do 
   xojcontent <- read_xournal fname 
+
+  case mdest of 
+    Nothing -> return ()
+    Just dest -> setCurrentDirectory dest
 
   let (fname_wo_ext,fname_ext) = splitExtension fname 
   let pages = xoj_pages xojcontent
