@@ -18,6 +18,6 @@ makeSVG = MakeSVG { xojfile = "test.xoj" &= typ "FILENAME" &= argPos 0
                   , dest = Nothing &= typ "DESTINATION" 
                   }
 
-
+mode :: Xournal_convert 
 mode = modes [test, makeSVG]
 

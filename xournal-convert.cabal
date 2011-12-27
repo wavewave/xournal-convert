@@ -1,5 +1,5 @@
 Name:		xournal-convert
-Version:	0.0.999
+Version:	0.1
 Synopsis:	convert utility for xoj files
 Description: 	convert xoj files into various formats 
 License: 	BSD3
@@ -32,12 +32,14 @@ Library
                    directory == 1.1.*, 
                    filepath == 1.2.*,
                    cmdargs >= 0.7 && < 0.10, 
-                   HStringTemplateHelpersIW, 
-                   HStringTemplate,
+                   HStringTemplate == 0.6.*,
                    xournal-types == 0.2.*,
                    xournal-parser == 0.3.*, 
                    xournal-render == 0.4.*, 
                    cairo == 0.12.*
+
+--                 HStringTemplateHelpersIW, 
+
   Exposed-Modules: 
                    Application.XournalConvert.ProgType
                    Application.XournalConvert.Job
@@ -45,4 +47,4 @@ Library
   Other-Modules: 
                    Paths_xournal_convert
  
-		 
+
