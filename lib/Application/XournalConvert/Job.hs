@@ -3,12 +3,12 @@
 module Application.XournalConvert.Job where
 
 import Data.List 
-import Graphics.Xournal.Render
+import Graphics.Xournal.Render.Simple
 import Graphics.Rendering.Cairo
 
-import Text.Xournal.Type
+import Data.Xournal.Simple
 import Text.Xournal.Parse
-import Text.Xournal.Predefined
+import Data.Xournal.Predefined
 
 import Text.StringTemplate
 import Text.StringTemplate.Helpers

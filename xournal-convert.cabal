@@ -1,7 +1,7 @@
 Name:		xournal-convert
-Version:	0.0
-Synopsis:	
-Description: 	
+Version:	0.0.999
+Synopsis:	convert utility for xoj files
+Description: 	convert xoj files into various formats 
 License: 	BSD3
 License-file:	LICENSE
 Author:		Ian-Woo Kim
@@ -18,19 +18,26 @@ Executable xournal-convert
   ghc-options: 	-Wall -O2 -threaded -funbox-strict-fields -fno-warn-unused-do-bind
   ghc-prof-options: -caf-all -auto-all
   Build-Depends: 
-                   base>4, mtl>2, directory, filepath,
-                   cmdargs, xournal-convert
+                   base == 4.*, 
+                   cmdargs >= 0.7 && < 0.10, 
+                   xournal-convert
 
 Library
   hs-source-dirs: lib
   ghc-options: 	-Wall -O2 -threaded -funbox-strict-fields -fno-warn-unused-do-bind
   ghc-prof-options: -caf-all -auto-all
   Build-Depends: 
-                   base>4, mtl>2, directory, filepath,
-                   cmdargs, 
-                   HStringTemplateHelpersIW, HStringTemplate,
-                   xournal-parser, xournal-render, 
-                   cairo>=0.12.0
+                   base == 4.*,
+                   mtl == 2.*, 
+                   directory == 1.1.*, 
+                   filepath == 1.2.*,
+                   cmdargs >= 0.7 && < 0.10, 
+                   HStringTemplateHelpersIW, 
+                   HStringTemplate,
+                   xournal-types == 0.2.*,
+                   xournal-parser == 0.3.*, 
+                   xournal-render == 0.4.*, 
+                   cairo == 0.12.*
   Exposed-Modules: 
                    Application.XournalConvert.ProgType
                    Application.XournalConvert.Job
