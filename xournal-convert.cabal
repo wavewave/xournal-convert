@@ -1,16 +1,22 @@
 Name:		xournal-convert
 Version:	0.1
 Synopsis:	convert utility for xoj files
-Description: 	convert xoj files into various formats 
+Description: 	convert xoj files into various formats (SVG,SVG+index.html..) 
+Homepage:       http://ianwookim.org/hxournal
 License: 	BSD3
 License-file:	LICENSE
 Author:		Ian-Woo Kim
 Maintainer: 	Ian-Woo Kim <ianwookim@gmail.com>
+Category:       Application
+Tested-with:    GHC == 7.0.4
 Build-Type: 	Simple
 Cabal-Version:  >= 1.8
 data-files:     
                 template/*.html.st
-
+                CHANGES
+Source-repository head
+  type: git
+  location: http://www.github.com/wavewave/xournal-convert
 
 Executable xournal-convert
   Main-is: xournal-convert.hs
@@ -37,8 +43,6 @@ Library
                    xournal-parser == 0.3.*, 
                    xournal-render == 0.4.*, 
                    cairo == 0.12.*
-
---                 HStringTemplateHelpersIW, 
 
   Exposed-Modules: 
                    Application.XournalConvert.ProgType
