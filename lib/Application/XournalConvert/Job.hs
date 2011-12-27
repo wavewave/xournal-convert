@@ -24,6 +24,11 @@ startJob = do
   putStrLn "job started"
 
 
+svgFileName :: String -> Int -> String 
+svgFileName fname_wo_ext page =
+  fname_wo_ext ++ "_Page_" ++ show page <.> "svg"
+
+
 startMakeSVG :: FilePath -> Maybe FilePath -> IO () 
 startMakeSVG fname mdest = do 
   xojcontent <- read_xournal fname 
@@ -34,7 +39,8 @@ startMakeSVG fname mdest = do
 
   let (fname_wo_ext,fname_ext) = splitExtension fname 
   let pages = xoj_pages xojcontent
-      names = map (\x -> fname_wo_ext ++ show x ++ ".svg") [1..] 
+      names = map (svgFileName fname_wo_ext) [1..]
+      -- names = map (\x -> fname_wo_ext ++ show x ++ ".svg") [1..] 
       namePages = zip names pages 
   let Dim w h = page_dim (head pages)
 
