@@ -1,5 +1,5 @@
 Name:		xournal-convert
-Version:	0.1.0.0.999
+Version:	0.1.0
 Synopsis:	convert utility for xoj files
 Description: 	convert xoj files into various formats (SVG,SVG+index.html..) 
 Homepage:       http://ianwookim.org/hxournal
