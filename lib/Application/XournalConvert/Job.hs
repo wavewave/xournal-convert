@@ -14,7 +14,7 @@ import Text.StringTemplate
 import System.Directory 
 import System.FilePath
 import System.IO
-
+import qualified Data.ByteString.Lazy as B
 import Paths_xournal_convert
 
 render1 :: [(String,String)] -> String -> String
@@ -30,18 +30,23 @@ startJob = do
   putStrLn "job started"
 
 
+checkIfBinary :: FilePath -> IO Bool 
+checkIfBinary fname = 
+  withFile fname ReadMode $ \h -> do
+    b <- return . B.any ( == 0 ) .  B.take 100 =<< B.hGetContents h 
+    b `seq` return b 
+   
+ifThenElse :: Bool -> a -> a -> a 
+ifThenElse b tact fact = if b then tact else fact 
 
 
 startMakeSVG :: FilePath -> Maybe FilePath -> IO () 
 startMakeSVG fname mdest = do 
-  xojcontent <- read_xournal fname 
+  xojcontent <- checkIfBinary fname >>= \b -> 
+                  ifThenElse b (read_xojgz fname) (read_xournal fname)
   cdir <- getCurrentDirectory 
   let dest = maybe cdir id mdest 
-
-  -- setCurrentDirectory dest 
-  let --  (fname_wo_ext,_fname_ext) = splitExtension fname 
-      fnamebase = takeBaseName fname 
-
+  let fnamebase = takeBaseName fname 
   let pages = xoj_pages xojcontent
       names = map (svgFileName fnamebase) [1..]
       namePages = zip names pages 
@@ -50,7 +55,7 @@ startMakeSVG fname mdest = do
 
   mapM_ svgoutfn namePages
   makeHtmlJavascriptPage (dest </> "index.html") $ zip [1..] (map fst namePages)
-  putStrLn "test ended"
+  return ()
 
 onePageTemplate :: String 
 onePageTemplate = "<p><div class=\"page\"> <a name=\"$page$\"> <img src=\"$filename$\" width=100% /> </a> </div> </p>\n\n"
