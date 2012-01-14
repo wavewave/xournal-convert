@@ -18,7 +18,8 @@ import qualified Data.ByteString.Lazy as B
 
 import Paths_xournal_convert
 
-makeSVGFromXournal :: Xournal -> FilePath -> FilePath -> IO () 
+makeSVGFromXournal :: Xournal -> FilePath -> FilePath 
+                   -> IO [String] 
 makeSVGFromXournal xojcontent fname dest = do 
   let fnamebase = takeBaseName fname 
   let pages = xoj_pages xojcontent
@@ -29,7 +30,7 @@ makeSVGFromXournal xojcontent fname dest = do
 
   mapM_ svgoutfn namePages
   makeHtmlJavascriptPage (dest </> "index.html") $ zip [1..] (map fst namePages)
-  return ()
+  return (map fst namePages )
 
 
 

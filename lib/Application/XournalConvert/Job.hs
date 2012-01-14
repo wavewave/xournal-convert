@@ -20,5 +20,5 @@ startMakeSVG fname mdest = do
   cdir <- getCurrentDirectory 
   let dest = maybe cdir id mdest 
   makeSVGFromXournal xojcontent fname dest 
-
+  return ()
 
